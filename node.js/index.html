@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Attendance Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>📚 Attendance</h2>
+  <ul>
+    <li onclick="showSection('dashboard')">🏠 Dashboard</li>
+    <li onclick="showSection('students')">👨‍🎓 Students</li>
+    <li onclick="showSection('attendance')">📅 Attendance</li>
+    <li onclick="showSection('reports')">📊 Reports</li>
+    <li onclick="logout()">🚪 Logout</li>
+  </ul>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="section active">
+    <h2>Dashboard</h2>
+
+    <div class="cards">
+      <div class="card">Total Students <span id="totalStudents">0</span></div>
+      <div class="card">Present Today <span id="presentCount">0</span></div>
+      <div class="card">Absent Today <span id="absentCount">0</span></div>
+    </div>
+  </div>
+
+  <!-- Students -->
+  <div id="students" class="section">
+    <h2>Manage Students</h2>
+
+    <div class="form-box">
+      <input id="name" placeholder="Enter Name">
+      <input id="email" placeholder="Enter Email">
+      <input id="studentClass" placeholder="Enter Class">
+      <button onclick="addStudent()">➕ Add Student</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Class</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="studentTable"></tbody>
+    </table>
+  </div>
+
+  <!-- Attendance -->
+  <div id="attendance" class="section">
+    <h2>Mark Attendance</h2>
+
+    <input type="date" id="date">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="attendanceTable"></tbody>
+    </table>
+
+    <button onclick="saveAttendance()">💾 Save Attendance</button>
+  </div>
+
+  <!-- ✅ Reports + Analytics (MERGED PROPERLY) -->
+  <div id="reports" class="section">
+    <h2>📊 Attendance Reports</h2>
+
+    <!-- Summary Cards -->
+    <div class="cards">
+      <div class="card">Total Students <span id="totalStudentsCard">0</span></div>
+      <div class="card">Avg Attendance <span id="avgAttendance">0%</span></div>
+      <div class="card">Best Student <span id="bestStudent">-</span></div>
+      <div class="card">Low Attendance <span id="lowStudent">-</span></div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts">
+      <canvas id="barChart"></canvas>
+      <canvas id="pieChart"></canvas>
+    </div>
+
+    <!-- Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Present Days</th>
+          <th>Total Days</th>
+          <th>Percentage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="reportTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
